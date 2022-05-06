@@ -91,11 +91,7 @@ const Nin = () => {
     }
   
   };
-  useEffect(() => {
-    if (access) {
-      navigate("/");
-    }
-  }, [access, navigate]);
+
   return (
     <Wrapper className="nin-container">
       <div className="container">

@@ -355,7 +355,7 @@ toast.success('Authorization Failed!Contact NPC.', {
 };
 
 const Wrapper = styled.main`
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-image: url(${lpg});
   background-position: center;

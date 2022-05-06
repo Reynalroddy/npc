@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Modal, Form } from "react-bootstrap";
 const Disclaimer = () => {
     const [smShow, setSmShow] = useState(false);
-    const access = localStorage.getItem("access_code");
+  
     const navigate = useNavigate();
     const handleMod = (e) => {
         e.preventDefault();
@@ -13,12 +13,10 @@ const Disclaimer = () => {
 navigate('/nin')
       };
     useEffect(() => {
-        if (access) {
-            navigate("/");
-          }
+       
         setSmShow(true);
        
-      }, [access,navigate]);
+      }, [navigate]);
   return (
     <Wrapper>
 
