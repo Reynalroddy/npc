@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Form } from "react-bootstrap";
 import axios from "axios";
@@ -11,8 +11,8 @@ const Nin = () => {
   // const { accessCode } = useSelector((state) => state.user);
   const [ninNum, setNinNum] = useState("");
 
-  const navigate = useNavigate();
-  const access = localStorage.getItem("access_code");
+
+ 
   const handleAppStart = async (e) => {
     e.preventDefault();
     try {
