@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import pic from "../assets/npc/water.png";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { saveNin } from "../redux/apiCalls";
