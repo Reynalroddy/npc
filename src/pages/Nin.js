@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styled from "styled-components";
 import { Form } from "react-bootstrap";
 import axios from "axios";
@@ -6,11 +6,12 @@ import { toast } from "react-toastify";
 import pic from "../assets/npc/water.png";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { saveNin } from "../redux/apiCalls";
+import {  useNavigate } from "react-router-dom";
 const Nin = () => {
   // const { accessCode } = useSelector((state) => state.user);
   const [ninNum, setNinNum] = useState("");
 
-
+const navigate = useNavigate();
  
   const handleAppStart = async (e) => {
     e.preventDefault();
@@ -91,6 +92,14 @@ const Nin = () => {
   
   };
 
+
+  useEffect(() => {
+   const locAccess = localStorage.getItem('auth');
+   if(!locAccess){
+navigate('/landing')
+   }
+  }, [navigate])
+  
   return (
     <Wrapper className="nin-container">
       <div className="container">

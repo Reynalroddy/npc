@@ -1,8 +1,8 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
-  const access = localStorage.getItem("auth");
-  console.log(access)
+  const access = localStorage.getItem("access_code");
+  console.log(access);
   if (!access) {
     return <Navigate to="/landing" />;
   }

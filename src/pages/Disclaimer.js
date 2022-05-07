@@ -12,12 +12,15 @@ const Disclaimer = () => {
         setSmShow(false);
 navigate('/nin')
       };
-      
+
     useEffect(() => {
-       
+        const locAccess = localStorage.getItem('auth');
+   if(!locAccess){
+navigate('/landing')
+   }
         setSmShow(true);
        
-      }, []);
+      }, [navigate]);
   return (
     <Wrapper>
 

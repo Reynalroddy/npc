@@ -44,10 +44,10 @@ const App = () => {
           <Route path="cg" element={<Congrats />} />
           <Route path="work" element={<Work />} />
           <Route path="prev" element={<Prev />} />
-          <Route path="nin" element={<Nin />} />
-          <Route path="disclaimer" element={<Disclaimer />} />
+         
         </Route>
-       
+        <Route path="nin" element={<Nin />} />
+          <Route path="disclaimer" element={<Disclaimer />} />
         <Route path="landing" element={<Landing />} />
         
         <Route path="*" element={<Error />} />
