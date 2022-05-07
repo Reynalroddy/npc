@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,7 @@ import styled from "styled-components";
 import peep from "../assets/npc/g.svg";
 import logo from "../assets/npc/logs.svg";
 import lpg from "../assets/npc/lpg.svg";
-import Loader from "../components/Loader";
+// import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 import { Modal, Form, Container,Col,Row } from "react-bootstrap";
 import axios from "axios";
@@ -17,9 +17,10 @@ const Landing = () => {
   const [accepted,setAccepted] =useState(['BWARI','KUJE','AMAC']);
   const [smShow, setSmShow] = useState(false);
   const [lmShow, setLmShow] = useState(false);
-  const [loc, setLoc] = useState('');
-  const [rl, setRl] = useState(true);
-  const [loads,setLod] = useState(false)
+  // const [loc, setLoc] = useState('');
+  // eslint-disable-next-line
+  const [rl, setRl] = useState(false);
+  // const [loads,setLod] = useState(false)
   const [appNum,setAppNum] = useState("");
   const [dataInf,setDataInfo] = useState(null);
   const [stat,setStat] = useState("");
@@ -109,61 +110,59 @@ setStat('Approved')
     //   });
     // }
   };
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function(position) {
+//   useEffect(() => {
+//     navigator.geolocation.getCurrentPosition(function(position) {
       
-      setLoc(`${position.coords.latitude},${position.coords.longitude}`);
-    });
+//       setLoc(`${position.coords.latitude},${position.coords.longitude}`);
+//     });
 
-    const getAc=async ()=>{
-      setLod(true);
-      try {
-        const rest = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${loc}&key=AIzaSyAxilHHgYI8vAoeAo9t1EDn2b6fF1YLUhI`)
-        // console.log(rest.data.results[0].address_components);
-const dz=rest.data.results[0].address_components.filter((it)=>it.types[0]==='administrative_area_level_2')
+//     const getAc=async ()=>{
+//       setLod(true);
+//       try {
+//         const rest = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${loc}&key=AIzaSyAxilHHgYI8vAoeAo9t1EDn2b6fF1YLUhI`)
+//         // console.log(rest.data.results[0].address_components);
+// const dz=rest.data.results[0].address_components.filter((it)=>it.types[0]==='administrative_area_level_2')
 
-// console.log(dz[0].short_name)
-if(accepted.includes(dz[0].short_name)){
-// console.log('true')
-setRl(false);
-setLod(false)
-localStorage.setItem('auth',true);
-toast.success('Authorization Successful!Proceed with application', {
-        position: "top-left",
-      });
-}
-else{
-  // console.log('false')
-setLod(false)
-toast.success('Authorization Failed!Contact NPC.', {
-  position: "top-left",
-});
-}
-      } catch (error) {
-        // console.log(error)
-        toast.error('Authorization failed!contact NPC', {
-          position: "top-left",
-        });
-        setLod(false)
-      }
+// // console.log(dz[0].short_name)
+// if(accepted.includes(dz[0].short_name)){
+// // console.log('true')
+// setRl(false);
+// setLod(false)
+// localStorage.setItem('auth',true);
+// toast.success('Authorization Successful!Proceed with application', {
+//         position: "top-left",
+//       });
+// }
+// else{
+//   // console.log('false')
+// setLod(false)
+// toast.success('Authorization Failed!Contact NPC.', {
+//   position: "top-left",
+// });
+// }
+//       } catch (error) {
+//         // console.log(error)
+//         toast.error('Authorization failed!contact NPC', {
+//           position: "top-left",
+//         });
+//         setLod(false)
+//       }
 
-    }
-  if(loc){
-    getAc();
+//     }
+//   if(loc){
+//     getAc();
     
-  }
+//   }
 
     
   
-    // if (access) {
-    //   navigate("/");
-    // }
-  }, [loc,accepted]);
-// console.log(access)
+  
+//   }, [loc,accepted]);
+
   return (
     <Wrapper>
 
-      {loads && <Loader/>}
+      {/* {loads && <Loader/>} */}
       <div className="first-row">
         <div className="img-cont">
           <img src={logo} className="img" alt="logo" />
