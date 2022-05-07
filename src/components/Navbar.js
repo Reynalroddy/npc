@@ -24,7 +24,7 @@ const Wrapper = styled.nav`
   top:0;
   left:0;
   gap: 0.5rem;
-
+z-index:100;
   h5{
     margin-bottom:0;
   }

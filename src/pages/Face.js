@@ -138,12 +138,12 @@ export const WebcamCapture = () => {
         </div>
       </div>
       
-      <div className="row">
-<div className="col-4 col-md-4 mx-auto">
-<button   className="my-btn  btn-clear px-5 mt-4" onClick={()=>navigate(-1)}>BACK</button>
+      <div className="btn-row">
+
+<button   className="my-btn  btn-clear px-5 mt-4 d-block btn-block" onClick={()=>navigate(-1)}>BACK</button>
            
            <button
-             className="my-btn mt-4  px-5"
+             className="my-btn mt-4  px-5 d-block btn-block"
              // disabled={isLoading}
              onClick={handleSubmit}
            >
@@ -152,7 +152,7 @@ export const WebcamCapture = () => {
 
 </div>
 
-      </div>
+     
            
     </div>
   );

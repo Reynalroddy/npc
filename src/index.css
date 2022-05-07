@@ -312,6 +312,10 @@ ul {
 .webcam-btn{
   background-color: black;
 }
+
+.btn-row{
+  width: 220px;
+}
 /* alert */
 
 @keyframes spinner {

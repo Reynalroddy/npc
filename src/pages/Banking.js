@@ -30,7 +30,8 @@ const dispatch = useDispatch();
         `https://api.verxid.site/npc/staging/v1/checkaccount?account_number=${numb}&bank_code=${cd}`
       );
       console.log(res);
-      if(res.data.status === false){
+      if(res.data.status === false && numb){
+        setAccName("");
         setLoading(false);
         Swal.fire({
           title: 'Error',
@@ -58,7 +59,7 @@ setAccType(nm);
 
   const kp = async (e) => {
     const nb = e.target.value;
-    if (e.target.value.length === 10) {
+    if (e.target.value.length === 10 || e.target.value.length >10 ||e.target.value.length < 10 ) {
       setLoading(true);
       try {
         const res = await axios.get(
@@ -66,6 +67,7 @@ setAccType(nm);
         );
         console.log(res.data.status);
         if(res.data.status === false && code!==""){
+          setAccName("");
           setLoading(false);
           Swal.fire({
             title: 'Error',
@@ -103,6 +105,16 @@ setAccType(nm);
  confirmButtonText: 'Ok'
       })
       
+    }
+    else if(!acctyp){
+      Swal.fire({
+        title: ' Error',
+        text: 'please  select account type!',
+        icon: 'error',
+       
+        confirmButtonColor: '#0b6916',
+ confirmButtonText: 'Ok'
+      })
     }
 
     else {
@@ -187,7 +199,7 @@ setAccType(nm);
                     })}
                   </Form.Select>
                 </Col>
-                {accName !== "" ? (
+                {accName && !loading ? (
                 <Col md={6} lg={6}>
                   <Form.Label className="text-left">Select Account type</Form.Label>
                   <Form.Select
@@ -212,7 +224,7 @@ setAccType(nm);
                 </Col>
                 ):""
 }
-                {accName !== "" ? (
+                {accName && !loading ? (
                   <Col md={6} lg={6}>
                     <Form.Group className="mb-3" controlId="formBasicEText">
                       <Form.Label className="text-left">
