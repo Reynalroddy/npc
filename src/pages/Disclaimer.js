@@ -14,10 +14,10 @@ navigate('/nin')
       };
 
     useEffect(() => {
-        const locAccess = localStorage.getItem('auth');
-   if(!locAccess){
-navigate('/landing')
-   }
+//         const locAccess = localStorage.getItem('auth');
+//    if(!locAccess){
+// navigate('/landing')
+//    }
         setSmShow(true);
        
       }, [navigate]);
