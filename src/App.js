@@ -48,7 +48,7 @@ const App = () => {
           <Route path="disclaimer" element={<Disclaimer />} />
         </Route>
        
-        <Route path="/landing" element={<Landing />} />
+        <Route path="landing" element={<Landing />} />
         
         <Route path="*" element={<Error />} />
       </Routes>
