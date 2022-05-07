@@ -12,11 +12,12 @@ const Disclaimer = () => {
         setSmShow(false);
 navigate('/nin')
       };
+      
     useEffect(() => {
        
         setSmShow(true);
        
-      }, [navigate]);
+      }, []);
   return (
     <Wrapper>
 

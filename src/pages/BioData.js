@@ -174,10 +174,7 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
   console.log(language)
   
   useEffect(() => {
-    // const myBio = localStorage.getItem("bio");
-    // if (myBio && !editBio) {
-    //   navigate("/residence");
-    // }
+   
     const fetchState = async () => {
       try {
         const res = await axios.get(
@@ -190,7 +187,7 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
       }
     };
     fetchState();
-  }, [editBio]);
+  }, []);
   return (
     <Wrapper>
       <div className="container">
