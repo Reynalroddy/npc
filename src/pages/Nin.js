@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Form } from "react-bootstrap";
 import axios from "axios";
@@ -93,12 +93,12 @@ const navigate = useNavigate();
   };
 
 
-  useEffect(() => {
-   const locAccess = localStorage.getItem('auth');
-   if(!locAccess){
-navigate('/landing')
-   }
-  }, [navigate])
+  // useEffect(() => {
+//    const locAccess = localStorage.getItem('auth');
+//    if(!locAccess){
+// navigate('/landing')
+//    }
+  // }, [navigate])
   
   return (
     <Wrapper className="nin-container">
