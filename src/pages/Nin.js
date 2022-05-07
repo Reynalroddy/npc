@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 import pic from "../assets/npc/water.png";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { saveNin } from "../redux/apiCalls";
-import {  useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 const Nin = () => {
   // const { accessCode } = useSelector((state) => state.user);
   const [ninNum, setNinNum] = useState("");
 
-const navigate = useNavigate();
+// const navigate = useNavigate();
  
   const handleAppStart = async (e) => {
     e.preventDefault();
