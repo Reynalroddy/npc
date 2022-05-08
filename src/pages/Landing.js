@@ -271,16 +271,19 @@ setStat('Approved')
               />
             </Form.Group>
 <div className="d-flex justify-content-center">
-<button type="submit" className="my-btn">
+<button type="submit" className="my-btn" style={{width:'200px'}}>
               PROCEED
             </button>
 
-            <button className="my-btn btn-clear ms-5" onClick={()=>setSmShow(false)}>
-            CLOSE
-          </button>
+           
 </div>
            
           </Form>
+          <div className="d-flex justify-content-center">
+            <button className="my-btn btn-clear mt-2" style={{width:'200px'}} onClick={()=>setSmShow(false)}>
+            CLOSE
+          </button>
+</div>
         </Modal.Body>
       </Modal>
 
