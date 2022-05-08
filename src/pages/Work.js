@@ -29,7 +29,7 @@ empPosition,
      jobDesc4,
      jobDesc5,
    poss,
-    accessCode,
+   
      eadType,
 ndhsType,
 nmisType,
@@ -360,7 +360,8 @@ else{
   };
 
   useEffect(() => {
-    if (!accessCode) {
+    const access = localStorage.getItem("access_code");
+    if (!access) {
       navigate("/");
     }
     if(editWork){
@@ -376,7 +377,7 @@ else{
     }
    
     
-  }, [workExperience,otherExperience,employed,editWork,accessCode,navigate]);
+  }, [workExperience,otherExperience,employed,editWork,navigate]);
   return (
     <Wrapper>
     <div className="container">

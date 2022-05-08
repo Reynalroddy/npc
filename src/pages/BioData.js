@@ -30,7 +30,6 @@ const animatedComponents = makeAnimated();
   const {
     userState,
     lga,
-  accessCode,
     surname,
     firstname,
     midname,
@@ -174,7 +173,8 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
   console.log(language)
   
   useEffect(() => {
-    if (!accessCode) {
+    const access = localStorage.getItem("access_code");
+    if (!access) {
       navigate("/");
     }
     const fetchState = async () => {
@@ -189,7 +189,7 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
       }
     };
     fetchState();
-  }, [accessCode,navigate]);
+  }, [navigate]);
   return (
     <Wrapper>
       <div className="container">

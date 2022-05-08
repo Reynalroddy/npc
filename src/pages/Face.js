@@ -13,7 +13,7 @@ const videoConstraints = {
 };
 
 export const WebcamCapture = () => {
-  const { editFace,accessCode} = useSelector((state) => state.user);
+  const { editFace} = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [image, setImage] = useState(localStorage.getItem('imgDataInfo')?JSON.parse(localStorage.getItem('imgDataInfo')).img:"");
@@ -89,10 +89,11 @@ export const WebcamCapture = () => {
   }, [webcamRef]);
 
   useEffect(() => {
-    if (!accessCode) {
+    const access = localStorage.getItem("access_code");
+    if (!access) {
       navigate("/");
     }
-  }, [navigate,accessCode]);
+  }, [navigate]);
   return (
     <div className="pars">
       <h4>Facial Capture</h4>

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import pic2 from "../assets/npc/water2.png";
 import { useNavigate } from "react-router-dom";
 const Edu = () => {
-  const { editEdu,accessCode } = useSelector((state) => state.user);
+  const { editEdu } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const vals = {
@@ -67,10 +67,11 @@ else{
   };
 
   useEffect(() => {
-    if (!accessCode) {
+    const access = localStorage.getItem("access_code");
+    if (!access) {
       navigate("/");
     }
-  }, [accessCode,navigate])
+  }, [navigate])
   
 
   return (

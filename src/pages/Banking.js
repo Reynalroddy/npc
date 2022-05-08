@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { handleChange } from "../redux/userSlice";
 import Swal  from 'sweetalert2/dist/sweetalert2';
 const Banking = () => {
-  const {editBank ,accessCode} = useSelector((state) => state.user);
+  const {editBank } = useSelector((state) => state.user);
 const dispatch = useDispatch();
   const [bank, setBanks] = useState([]);
   const [code, setCode] = useState("");
@@ -141,7 +141,8 @@ setAccType(nm);
   
   useEffect(() => {
  
-    if (!accessCode) {
+    const access = localStorage.getItem("access_code");
+    if (!access) {
       navigate("/");
     }
     const fetchBanks = async () => {
@@ -156,7 +157,7 @@ setAccType(nm);
       }
     };
     fetchBanks();
-  }, [navigate,accessCode]);
+  }, [navigate]);
   return (
     <Wrapper className="nin-container">
       <div className="container">

@@ -325,11 +325,12 @@ email,phone
       }
     }
       useEffect(() => {
-        if (!accessCode) {
+        const access = localStorage.getItem("access_code");
+        if (!access) {
           navigate("/");
         }
         
-      }, [navigate,accessCode]);
+      }, [navigate]);
       
   return ( 
     <Wrapper>

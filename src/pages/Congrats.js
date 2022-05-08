@@ -12,9 +12,7 @@ const Congrats = () => {
     navigate("/");
   };
   useEffect(() => {
-    if (!accessCode) {
-      navigate("/");
-    }
+  
     localStorage.removeItem("eduDataInfo");
     localStorage.removeItem("access_code");
     localStorage.removeItem("nin");
@@ -26,7 +24,7 @@ const Congrats = () => {
     localStorage.removeItem("bankDataInfo");
     localStorage.removeItem("conDataInfo");
     localStorage.clear();
-  }, [accessCode,navigate])
+  }, [navigate])
   
   return (
     <Wrapper>

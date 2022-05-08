@@ -261,10 +261,11 @@ const usersLga= localStorage.getItem('bioDataInfo')?JSON.parse(localStorage.getI
 //     }
 
 useEffect(() => {
-if(!accessCode){
-navigate('/')
-}
-}, [accessCode,navigate])
+  const access = localStorage.getItem("access_code");
+  if (!access) {
+    navigate("/");
+  }
+}, [navigate])
 
   return (
     <Wrapper>
