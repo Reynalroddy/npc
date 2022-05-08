@@ -54,7 +54,7 @@ const Congrats = () => {
 <a href="https://instagram.com/npc_nigeria?igshid=YmMyMTA2M2Y="><BsInstagram/></a>
 
         </div>
-        <Link to="/landing">
+        <Link to="/">
           <button className="my-btn my-4" onClick={sub}>
             OKAY
           </button>
