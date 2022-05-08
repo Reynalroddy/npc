@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { handleChange } from "../redux/userSlice";
 import Swal  from 'sweetalert2/dist/sweetalert2';
 const Banking = () => {
-  const {editBank } = useSelector((state) => state.user);
+  const {editBank ,accessCode} = useSelector((state) => state.user);
 const dispatch = useDispatch();
   const [bank, setBanks] = useState([]);
   const [code, setCode] = useState("");
@@ -141,6 +141,9 @@ setAccType(nm);
   
   useEffect(() => {
  
+    if (!accessCode) {
+      navigate("/");
+    }
     const fetchBanks = async () => {
       try {
         const res = await axios.get(
@@ -153,7 +156,7 @@ setAccType(nm);
       }
     };
     fetchBanks();
-  }, [navigate,editBank]);
+  }, [navigate,accessCode]);
   return (
     <Wrapper className="nin-container">
       <div className="container">

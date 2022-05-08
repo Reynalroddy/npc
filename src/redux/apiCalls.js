@@ -29,7 +29,7 @@ export const saveNin=async(num)=>{
             localStorage.setItem("nin", num);
             localStorage.setItem("access_code", data.nimc.access_code);
 
-            window.location.href='/';
+            window.location.href='/bio-data';
           }
         } catch (error) {
           console.log(error);

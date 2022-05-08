@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState,useEffect} from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import styled from "styled-components";
 import { useSelector,useDispatch } from "react-redux";
@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import pic2 from "../assets/npc/water2.png";
 import { useNavigate } from "react-router-dom";
 const Edu = () => {
-  const { editEdu } = useSelector((state) => state.user);
+  const { editEdu,accessCode } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const vals = {
@@ -65,6 +65,13 @@ else{
 
   
   };
+
+  useEffect(() => {
+    if (!accessCode) {
+      navigate("/");
+    }
+  }, [accessCode,navigate])
+  
 
   return (
     <Wrapper>

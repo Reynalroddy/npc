@@ -29,7 +29,7 @@ empPosition,
      jobDesc4,
      jobDesc5,
    poss,
-    
+    accessCode,
      eadType,
 ndhsType,
 nmisType,
@@ -360,6 +360,9 @@ else{
   };
 
   useEffect(() => {
+    if (!accessCode) {
+      navigate("/");
+    }
     if(editWork){
       if (workExperience ) {
         setWorkExp(true);
@@ -373,7 +376,7 @@ else{
     }
    
     
-  }, [workExperience,otherExperience,employed,editWork]);
+  }, [workExperience,otherExperience,employed,editWork,accessCode,navigate]);
   return (
     <Wrapper>
     <div className="container">

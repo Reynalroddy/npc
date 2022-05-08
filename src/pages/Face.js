@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Webcam from "react-webcam";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const videoConstraints = {
 };
 
 export const WebcamCapture = () => {
-  const { editFace} = useSelector((state) => state.user);
+  const { editFace,accessCode} = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [image, setImage] = useState(localStorage.getItem('imgDataInfo')?JSON.parse(localStorage.getItem('imgDataInfo')).img:"");
@@ -88,12 +88,11 @@ export const WebcamCapture = () => {
     setImage(imageSrc);
   }, [webcamRef]);
 
-  // useEffect(() => {
-  //   const myFace = localStorage.getItem("face");
-  //   if (myFace && !editFace) {
-  //     navigate("/banking-info");
-  //   }
-  // }, [navigate,editFace]);
+  useEffect(() => {
+    if (!accessCode) {
+      navigate("/");
+    }
+  }, [navigate,accessCode]);
   return (
     <div className="pars">
       <h4>Facial Capture</h4>

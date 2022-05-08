@@ -9,10 +9,12 @@ const Congrats = () => {
   const navigate = useNavigate();
   const { accessCode} = useSelector((state) => state.user);
   const sub = () => {
-    navigate("/landing");
+    navigate("/");
   };
   useEffect(() => {
-    
+    if (!accessCode) {
+      navigate("/");
+    }
     localStorage.removeItem("eduDataInfo");
     localStorage.removeItem("access_code");
     localStorage.removeItem("nin");
@@ -23,7 +25,8 @@ const Congrats = () => {
     localStorage.removeItem("resDataInfo");
     localStorage.removeItem("bankDataInfo");
     localStorage.removeItem("conDataInfo");
-  }, [])
+    localStorage.clear();
+  }, [accessCode,navigate])
   
   return (
     <Wrapper>
@@ -36,7 +39,7 @@ const Congrats = () => {
           <img src={cg} alt="404" className="img" />
         </div>
 
-        <h3>Registeration Successful!</h3>
+        <h3>Registration Successful!</h3>
         <h5>Application id:{accessCode}</h5>
         <p>
           Confirmation message is sent to your email address.

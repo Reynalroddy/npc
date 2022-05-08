@@ -12,7 +12,7 @@ const Prev = () => {
 // const[dats,setData] = useState({});
 // const[error,setError] = useState(false);
 // const[loading,setLoading] = useState(false);
-const auth = localStorage.getItem('auth')?JSON.parse(localStorage.getItem('auth')):""
+
 const navigate = useNavigate();
 const dispatch=useDispatch();
 
@@ -261,10 +261,10 @@ const usersLga= localStorage.getItem('bioDataInfo')?JSON.parse(localStorage.getI
 //     }
 
 useEffect(() => {
-if(!auth){
-navigate('/landing')
+if(!accessCode){
+navigate('/')
 }
-}, [auth,navigate])
+}, [accessCode,navigate])
 
   return (
     <Wrapper>

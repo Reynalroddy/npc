@@ -30,7 +30,7 @@ const animatedComponents = makeAnimated();
   const {
     userState,
     lga,
-  
+  accessCode,
     surname,
     firstname,
     midname,
@@ -174,7 +174,9 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
   console.log(language)
   
   useEffect(() => {
-   
+    if (!accessCode) {
+      navigate("/");
+    }
     const fetchState = async () => {
       try {
         const res = await axios.get(
@@ -187,7 +189,7 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
       }
     };
     fetchState();
-  }, []);
+  }, [accessCode,navigate]);
   return (
     <Wrapper>
       <div className="container">

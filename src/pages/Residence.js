@@ -38,7 +38,8 @@ const Residence = () => {
         userResStateDet,
         lgaResDet,
         editRes,
-        wardDet
+        wardDet,
+        accessCode
       } = useSelector((state) => state.user);
       const dispatch = useDispatch();
 
@@ -170,9 +171,8 @@ const Residence = () => {
         setWards(data.npc);
       };
       useEffect(() => {
-        const myRes = localStorage.getItem("res");
-        if (myRes && !editRes) {
-          navigate("/contact");
+        if (!accessCode) {
+          navigate("/");
         }
         const fetchState = async () => {
           try {
@@ -186,7 +186,7 @@ const Residence = () => {
           }
         };
         fetchState();
-      }, [navigate,editRes]);
+      }, [navigate,accessCode]);
   return ( 
     <Wrapper>
 

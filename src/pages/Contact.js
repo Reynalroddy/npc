@@ -1,4 +1,4 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
 import Title from '../components/Title';
 import { Form,Row,Col,InputGroup,FormControl,Button } from 'react-bootstrap';
 import pic2 from "../assets/npc/water2.png";
@@ -29,6 +29,18 @@ const handleOtpInp=(e)=>{
 
 
       const verPhone=async()=>{
+        if(!phone){
+          Swal.fire({
+            title: 'Error',
+            text: 'phone can not be empty',
+            icon: 'error',
+           
+            confirmButtonColor: '#0b6916',
+     confirmButtonText: 'Ok'
+          })
+        }
+
+        else{
           try {
             var config = {
                 method: 'get',
@@ -72,6 +84,7 @@ showOt(true);
          confirmButtonText: 'Ok'
               })
           }
+        }
       }
 
 
@@ -137,58 +150,72 @@ showOt(false);
 
 
     const verEmail=async()=>{
+      if(!email){
+        Swal.fire({
+          title: 'Error',
+          text: 'email can not be empty',
+          icon: 'error',
+         
+          confirmButtonColor: '#0b6916',
+   confirmButtonText: 'Ok'
+        })
+      }
+
+      else{
         try {
-            var formdata = new FormData();
-            formdata.append("email", email);
-            
-          var config = {
-            method: "post",
-            url: "https://api.verxid.site/npc/staging/v1/verifyEmail",
-            headers: {
-              Authorization: "Basic YmFybmtzZm9ydGUtbmltYzowbmx5YmFybmtzMTIz",
-            },
-            data: formdata,
-            };
-            const { data } = await axios(config);
-            console.log(data)
-            if(data.nimc.status === 1){
-              Swal.fire({
-                title: 'Success',
-                text: data.nimc.msg,
-                icon: 'success',
-               
-                confirmButtonColor: '#0b6916',
-         confirmButtonText: 'Ok'
-              })
+          var formdata = new FormData();
+          formdata.append("email", email);
+          
+        var config = {
+          method: "post",
+          url: "https://api.verxid.site/npc/staging/v1/verifyEmail",
+          headers: {
+            Authorization: "Basic YmFybmtzZm9ydGUtbmltYzowbmx5YmFybmtzMTIz",
+          },
+          data: formdata,
+          };
+          const { data } = await axios(config);
+          console.log(data)
+          if(data.nimc.status === 1){
+            Swal.fire({
+              title: 'Success',
+              text: data.nimc.msg,
+              icon: 'success',
              
-                setVer2(true);
-                
-            }
-            else if(data.nimc.status === 0){
-              Swal.fire({
-                title: 'Error',
-                text: data.nimc.msg,
-                icon: 'error',
-               
-                confirmButtonColor: '#0b6916',
-         confirmButtonText: 'Ok'
-              })
-               ;
-            }
-     
-        } catch (error) {
-            console.log(error)
+              confirmButtonColor: '#0b6916',
+       confirmButtonText: 'Ok'
+            })
+           
+              setVer2(true);
+              
+          }
+          else if(data.nimc.status === 0){
             Swal.fire({
               title: 'Error',
-              text: 'please retry',
+              text: data.nimc.msg,
               icon: 'error',
              
               confirmButtonColor: '#0b6916',
        confirmButtonText: 'Ok'
             })
-            
-            
-        }
+             ;
+          }
+   
+      } catch (error) {
+          console.log(error)
+          Swal.fire({
+            title: 'Error',
+            text: 'please retry',
+            icon: 'error',
+           
+            confirmButtonColor: '#0b6916',
+     confirmButtonText: 'Ok'
+          })
+          
+          
+      }
+      }
+       
     }
        const handleSubmit = async (e) => {
         e.preventDefault();
@@ -296,13 +323,12 @@ email,phone
 
       }
     }
-      // useEffect(() => {
-      //   const myCon = localStorage.getItem("contc");
-      //   if (myCon && !editCon) {
-      //     navigate("/education-data");
-      //   }
+      useEffect(() => {
+        if (!accessCode) {
+          navigate("/");
+        }
         
-      // }, [navigate,editCon]);
+      }, [navigate,accessCode]);
       
   return ( 
     <Wrapper>
@@ -328,7 +354,7 @@ email,phone
       onKeyUp={kpx}
     />
     <Button  id="button-addon2" className="my-btn" onClick={verPhone}>
-      verify
+      {ver1?'verified':'verify'}
     </Button>
   </InputGroup>
 
