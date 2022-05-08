@@ -14,6 +14,7 @@ const Contact = () => {
   const [ot,showOt] = useState(false);
 const [code,setCode] = useState("");
 const [ver1,setVer1] = useState(false);
+// eslint-disable-next-line
 const [ver2,setVer2] = useState(false);
 const handleOtpInp=(e)=>{
     setCode(e.target.value)
@@ -220,18 +221,18 @@ showOt(false);
        const handleSubmit = async (e) => {
         e.preventDefault();
     // console.log(ver1,ver2,phone,email)
-    if(!ver1 || !ver2){
-        Swal.fire({
-            title: ' Verification Unsuccessful!',
-            text: 'Verify email and phone number',
-            icon: 'warning',
+    // if(!ver1 || !ver2){
+    //     Swal.fire({
+    //         title: ' Verification Unsuccessful!',
+    //         text: 'Verify email and phone number',
+    //         icon: 'warning',
            
-            confirmButtonColor: '#0b6916',
-     confirmButtonText: 'Ok'
-          })
-    }
+    //         confirmButtonColor: '#0b6916',
+    //  confirmButtonText: 'Ok'
+    //       })
+    // }
 
-    else{
+    // else{
       const con_data={
 email,phone
       }
@@ -300,7 +301,7 @@ email,phone
     //         position: "top-left",
     //       });
     //     }
-      };
+      // };
     }
     
        
