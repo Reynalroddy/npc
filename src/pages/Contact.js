@@ -163,24 +163,21 @@ showOt(false);
       }
 
       else{
+        console.log(email)
         try {
-          var formdata = new FormData();
-          formdata.append("email", email);
-          
-        var config = {
-          method: "post",
-          url: "https://api.verxid.site/npc/staging/v1/verifyEmail",
-          headers: {
-            Authorization: "Basic YmFybmtzZm9ydGUtbmltYzowbmx5YmFybmtzMTIz",
-          },
-          data: formdata,
-          };
-          const { data } = await axios(config);
-          console.log(data)
-          if(data.nimc.status === 1){
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+fetch(`https://api.verxid.site/npc/staging/v1/verifyEmail?email=${email}`, requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    console.log(result.nimc.status)
+    if(result.nimc.status === 1){
             Swal.fire({
               title: 'Success',
-              text: data.nimc.msg,
+              text: result.nimc.msg,
               icon: 'success',
              
               confirmButtonColor: '#0b6916',
@@ -190,17 +187,53 @@ showOt(false);
               setVer2(true);
               
           }
-          else if(data.nimc.status === 0){
+          else if(result.nimc.status === 0){
             Swal.fire({
               title: 'Error',
-              text: data.nimc.msg,
+              text: result.nimc.msg,
               icon: 'error',
              
               confirmButtonColor: '#0b6916',
        confirmButtonText: 'Ok'
             })
-             ;
-          }
+         }})
+  .catch(error => console.log('error', error));
+          // }
+        //   var formdata = new FormData();
+        //   formdata.append("email", email);
+          
+        // var config = {
+        //   method: "post",
+        //   url: "https://api.verxid.site/npc/staging/v1/verifyEmail",
+        
+        //   data: formdata,
+        //   };
+        //   const { data } = await axios(config);
+        //   console.log(data)
+      //     if(data.nimc.status === 1){
+      //       Swal.fire({
+      //         title: 'Success',
+      //         text: data.nimc.msg,
+      //         icon: 'success',
+             
+      //         confirmButtonColor: '#0b6916',
+      //  confirmButtonText: 'Ok'
+      //       })
+           
+      //         setVer2(true);
+              
+      //     }
+      //     else if(data.nimc.status === 0){
+      //       Swal.fire({
+      //         title: 'Error',
+      //         text: data.nimc.msg,
+      //         icon: 'error',
+             
+      //         confirmButtonColor: '#0b6916',
+      //  confirmButtonText: 'Ok'
+      //       })
+      //        ;
+      //    }
    
       } catch (error) {
           console.log(error)
