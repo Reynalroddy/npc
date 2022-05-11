@@ -10,8 +10,12 @@ import makeAnimated from 'react-select/animated';
 import CreatableSelect from "react-select/creatable";
 import Title from "../components/Title";
 import pic2 from "../assets/npc/water2.png";
-
+import { toast } from "react-toastify";
 import Datetime from "react-datetime";
+
+// .........testing.......
+// import { components } from "react-select";
+import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 const BioData = () => {
   const navigate = useNavigate();
   const isValidDate = (current) => {
@@ -86,8 +90,23 @@ const animatedComponents = makeAnimated();
                     navigate("/prev"); 
                   } 
                   else{
-                    localStorage.setItem('bioDataInfo',JSON.stringify(bio_data))
-        navigate("/residence"); 
+                    if(!date){
+                      toast.error('please fill in date', {
+                              position: "top-center",
+                            });
+                            return;
+                    }
+                    if(!language){
+                      toast.error('please fill in language', {
+                              position: "top-center",
+                            });
+                            return;
+                    }
+                    else{
+                      localStorage.setItem('bioDataInfo',JSON.stringify(bio_data))
+                      navigate("/residence"); 
+                    }
+                    
       }
       }
 
@@ -108,6 +127,17 @@ const animatedComponents = makeAnimated();
     const newz=news.join(',')
     dispatch(handleChange({ name, value:newz }));
     console.log(news,newz);
+  };
+
+  const handleMultiiSelect = (selectedOption) => {
+    console.log(selectedOption);
+    // const news = selectedOption.map((it, i) => {
+    //   return it.value;
+    // });
+    // const name = "language";
+    // const newz=news.join(',')
+    // dispatch(handleChange({ name, value:newz }));
+    // console.log(news,newz);
   };
 
   // const handleMultiAsyncSelect = (selectedOption) => {
@@ -248,7 +278,7 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
 
                 {
                   date===""?
-                  <Datetime inputProps={{placeholder:'DATE OF BIRTH'}} required isValidDate={isValidDate}  onChange={(date)=>
+                  <Datetime inputProps={{placeholder:'DATE OF BIRTH'}} required={true}  isValidDate={isValidDate}  onChange={(date)=>
                     {
                     // 
                     const selectedDate = new Date(date._d); // pass in date param here
@@ -262,7 +292,6 @@ dispatch(handleChange({ name, value }));
                
                 :<Form.Control
                 required
-              
                 type="text"
                 placeholder="DOB"
                 name="date"
@@ -451,6 +480,8 @@ return  { value: it, label: it };
                 <option value="igbo">Igbo</option>
                 <option value="hausa">Hausa</option>
               </Form.Select> */}
+
+<ReactMultiSelectCheckboxes options={options} onChange={handleMultiiSelect} />
             </Col>
             <Col md={4} lg={4} className="mb-3">
             <Form.Label className="text-left">Other languages</Form.Label>

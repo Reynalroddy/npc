@@ -250,7 +250,7 @@ setStat('Approved')
               <Form.Check
                 required
                 type="checkbox"
-                label="Valid Gmail Address"
+                label="Valid Email Address"
                 className="shadow_none form_check"
               />
             </Form.Group>

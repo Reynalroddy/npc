@@ -244,7 +244,7 @@ const Residence = () => {
             </Col>
              
             <Col md={4} lg={4}>
-              <Form.Label className="text-left">Select Wards</Form.Label>
+              <Form.Label className="text-left">Select three Wards closest to you.</Form.Label>
               <Select
               
                 isMulti
@@ -255,7 +255,7 @@ const Residence = () => {
                 closeMenuOnSelect={false}  
                 isValidNewOption={isValidNewOption} 
                 components={{ Menu }}
-                placeholder={'select three wards'}
+                placeholder={'select three wards closest to you'}
               />
               
             </Col> 

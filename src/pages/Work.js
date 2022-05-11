@@ -388,7 +388,7 @@ else{
         <Col md={6} lg={6}>
               <Form.Group className="mb-3" controlId="formBasicEText">
               <Form.Label className="text-left">
-                  Do you have any previous work experience with NPC?
+                  Do you have any previous work experience with NPC(Census experience)?
                 </Form.Label>
                 <Form.Select
                required
@@ -579,7 +579,7 @@ else{
             <Col md={6} lg={6}>
               <Form.Group className="mb-3" controlId="formBasicEText">
               <Form.Label className="text-left">
-                  Do you have any experience in fieldwork/data collection, data capturing/processing, supervisory?
+                  Do you have any experience in fieldwork/data collection, data capturing/processing, supervisory(Outside NPC)?
                 </Form.Label>
                 <Form.Select
                 required
@@ -712,10 +712,10 @@ emp && <Col md={6} lg={6} className='pt-1'>
                 <option value="">Select </option>
 
                 <option value="Enumerator">Enumerator</option>
-
+<option value='Census trainers/Facilitators'>Census trainers/Facilitators</option>
                 <option value="Supervisor">Supervisor</option>
-                <option value="Coordinator">Coordinator</option>
-                <option value="Others">Others</option>
+                <option value="Data quality assistants/Coordinator">Data quality assistants/Coordinator</option>
+              
               </Form.Select>
               </Form.Group>
             </Col>
