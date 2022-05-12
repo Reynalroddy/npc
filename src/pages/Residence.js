@@ -131,8 +131,13 @@ const Residence = () => {
           data: formdata,
         };
         const { data } = await axios(config);
-        // console.log(data.npc);
+        console.log(data.npc);
+        // if(lgas){
+        //   setLga(data.npc);
+        //   return;
+        // }
         setLga(data.npc);
+        // setWards([]);
         // setUserState(e.target.value);
         // console.log(userState);
       };
@@ -235,7 +240,7 @@ const Residence = () => {
                 <option value="">Select LGA</option>
                 {lgas.map((it, i) => {
                   return (
-                    <option value={it.id} key={i}>
+                    <option value={it.id} key={it.id}>
                       {it.name}
                     </option>
                   );

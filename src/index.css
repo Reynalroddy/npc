@@ -276,6 +276,10 @@ ul {
   background: var(--backgroundColor) !important;
 }
 
+
+.css-1r4vtzz {
+  width: 100% !important;
+}
 .form_input,
 .form-textarea,
 .form_check:checked,

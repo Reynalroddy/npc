@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleChange,handleStChange} from "../redux/userSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Select from "react-select";
-import makeAnimated from 'react-select/animated';
+// import Select from "react-select";
+// import makeAnimated from 'react-select/animated';
 import CreatableSelect from "react-select/creatable";
 import Title from "../components/Title";
 import pic2 from "../assets/npc/water2.png";
@@ -23,7 +23,7 @@ const BioData = () => {
     return year >= 1972 && year <= 2004;
   };
 
-const animatedComponents = makeAnimated();
+// const animatedComponents = makeAnimated();
   const options = [
     { value: "english", label: "English" },
     { value: "yoruba", label: "Yoruba" },
@@ -118,7 +118,18 @@ const animatedComponents = makeAnimated();
 
 
 
-  const handleMultiSelect = (selectedOption) => {
+  // const handleMultiSelect = (selectedOption) => {
+  //   console.log(selectedOption);
+  //   const news = selectedOption.map((it, i) => {
+  //     return it.value;
+  //   });
+  //   const name = "language";
+  //   const newz=news.join(',')
+  //   dispatch(handleChange({ name, value:newz }));
+  //   console.log(news,newz);
+  // };
+
+  const handleMultiiSelect = (selectedOption) => {
     console.log(selectedOption);
     const news = selectedOption.map((it, i) => {
       return it.value;
@@ -128,18 +139,10 @@ const animatedComponents = makeAnimated();
     dispatch(handleChange({ name, value:newz }));
     console.log(news,newz);
   };
+     
+     
 
-  const handleMultiiSelect = (selectedOption) => {
-    console.log(selectedOption);
-    // const news = selectedOption.map((it, i) => {
-    //   return it.value;
-    // });
-    // const name = "language";
-    // const newz=news.join(',')
-    // dispatch(handleChange({ name, value:newz }));
-    // console.log(news,newz);
-  };
-
+     
   // const handleMultiAsyncSelect = (selectedOption) => {
   //   const news = selectedOption.map((it, i) => {
   //     return it.id;
@@ -452,7 +455,7 @@ dispatch(handleChange({ name, value }));
               <Form.Label className="text-left">
                 Select multiple Language Proficiency
               </Form.Label>
-              <Select
+              {/* <Select
                 isMulti
                 options={options}
                 components={animatedComponents}
@@ -462,31 +465,17 @@ dispatch(handleChange({ name, value }));
                 value={language&&language.split(',').map((it)=>{
 return  { value: it, label: it };
 
-                })}
-                // delimiter=','
-              />
-              {/* <Form.Select
-                required
-                multiple
-                aria-label="Default select example"
-                name="language"
-                // value={language}
-                onChange={handleMultiSelect}
-                className="shadow-none "
-              >
-                <option value="english">English</option>
-                <option value="french">Pidgin</option>
-                <option value="yoruba">Yoruba</option>
-                <option value="igbo">Igbo</option>
-                <option value="hausa">Hausa</option>
-              </Form.Select> */}
-
-<ReactMultiSelectCheckboxes options={options} onChange={handleMultiiSelect} />
+                })}  
+              /> */}
+              
+<ReactMultiSelectCheckboxes options={options} onChange={handleMultiiSelect}  style={{width:'100%'}}  className=""  value={language&&language.split(',').map((it)=>{
+return  { value: it, label: it };
+                })} />
             </Col>
             <Col md={4} lg={4} className="mb-3">
             <Form.Label className="text-left">Other languages</Form.Label>
             <CreatableSelect
-            
+                  
         isMulti
         onChange={handleC}
         formatCreateLabel={(inputText) => `Add "${inputText}"`}

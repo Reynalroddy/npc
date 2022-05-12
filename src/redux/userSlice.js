@@ -47,11 +47,10 @@ projectYear:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem
 employed:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).employed:"",
 orgName:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).orgName:"",
 empPosition:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).empPosition:"",
-eadType:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).eadType:"",
-ndhsType:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).ndhsType:"",
-nmisType:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).nmisType:"",
-nedsType:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).nedsType:"",
-preType:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).preType:"",
+jobDesc6:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).jobDesc6:"",
+jobDesc7:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).jobDesc7:"",
+jobDesc8:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).jobDesc8:"",
+
 poss:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).poss:"",
 editBio:false,
 editRes:false,
@@ -60,7 +59,9 @@ editEdu:false,
 editWork:false,
 editFace:false,
 editBank:false,
-// jobDesc:"",
+workExp:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).workExp:false,
+otherExp:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).otherExp:false,
+emp:localStorage.getItem('workDataInfo')?JSON.parse(localStorage.getItem('workDataInfo')).emp:false,
   },
 
   reducers: {
@@ -68,6 +69,13 @@ editBank:false,
       return { ...state, isOpen: !state.isOpen };
     },
     handleChange: (state, action) => {
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value,
+      };
+    },
+
+    handlewrkChange: (state, action) => {
       return {
         ...state,
         [action.payload.name]: action.payload.value,
@@ -132,7 +140,8 @@ export const {
   clearValue,
   handleMapChange,
   handleCodChange,
-  handleStChange
+  handleStChange,
+  handlewrkChange,
 } = userSlice.actions;
 
 export default userSlice.reducer;

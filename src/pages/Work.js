@@ -1,18 +1,18 @@
-import React, { useState,useEffect} from "react";
+import React, { useEffect} from "react";
 import styled from "styled-components";
 import { Row, Col, Form ,FormControl} from "react-bootstrap";
 import pic2 from "../assets/npc/water2.png";
 import { useDispatch, useSelector } from "react-redux";
-import { handleChange } from "../redux/userSlice";
+import { handleChange,handlewrkChange } from "../redux/userSlice";
 // import axios from "axios";
-import Select from "react-select";
+// import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 // import { toast } from "react-toastify";
 import Title from "../components/Title";
 const Work = () => {
-  const [workExp,setWorkExp]=useState(false);
-  const [otherExp,setOtherExp]=useState(false);
-  const [emp,setEmp]=useState(false);
+  // const [workExp,setWorkExp]=useState(false);
+  // const [otherExp,setOtherExp]=useState(false);
+  // const [emp,setEmp]=useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -29,140 +29,142 @@ empPosition,
      jobDesc4,
      jobDesc5,
    poss,
-   
-     eadType,
-ndhsType,
-nmisType,
-nedsType,
-preType,
-editWork
+   jobDesc6,
+   jobDesc7,
+   jobDesc8,
+editWork,
+workExp,
+otherExp,
+emp
    } = useSelector((state) => state.user);
    // eslint-disable-next-line
-  const [eads, setEad] = useState([
-    {label:'Phase 1',
-      val:'Phase 1'
-  },
-  {label:'Phase 2',
-  val:'Phase 2'
-},
-{label:'Phase 3',
-val:'Phase 3'
-},
-{label:'Phase 4',
-val:'Phase 4'
-},
- {label:'Phase 5',
-val:'Phase 5'
-},
-{label:'Phase 6',
-val:'Phase 6'
-},
-{label:'Phase 7',
-val:'Phase 7'
-},
-{label:'Phase 8',
-val:'Phase 8'
-},
-{label:'Phase 9',
-val:'Phase 9'
-},
-{label:'Phase 10',
-val:'Phase 10'
-},
-{label:'Phase 11',
-val:'Phase 11'
-},
-{label:'Phase 12',
-val:'Phase 12'
-},
-{label:'Phase 13',
-val:'Phase 13'
-},
-{label:'Phase 14',
-val:'Phase 14'
-},
-{label:'Phase 15',
-val:'Phase 15'
-},
-{label:'Phase 16',
-val:'Phase 16'
-},
-{label:'Phase 17',
-val:'Phase 17'
-},
-{label:'Phase 18',
-val:'Phase 18'
-},
-  ]);
-  // eslint-disable-next-line
-  const [ndh, setNdh] = useState([
+//   const [eads, setEad] = useState([
+//     {label:'Phase 1',
+//       val:'Phase 1'
+//   },
+//   {label:'Phase 2',
+//   val:'Phase 2'
+// },
+// {label:'Phase 3',
+// val:'Phase 3'
+// },
+// {label:'Phase 4',
+// val:'Phase 4'
+// },
+//  {label:'Phase 5',
+// val:'Phase 5'
+// },
+// {label:'Phase 6',
+// val:'Phase 6'
+// },
+// {label:'Phase 7',
+// val:'Phase 7'
+// },
+// {label:'Phase 8',
+// val:'Phase 8'
+// },
+// {label:'Phase 9',
+// val:'Phase 9'
+// },
+// {label:'Phase 10',
+// val:'Phase 10'
+// },
+// {label:'Phase 11',
+// val:'Phase 11'
+// },
+// {label:'Phase 12',
+// val:'Phase 12'
+// },
+// {label:'Phase 13',
+// val:'Phase 13'
+// },
+// {label:'Phase 14',
+// val:'Phase 14'
+// },
+// {label:'Phase 15',
+// val:'Phase 15'
+// },
+// {label:'Phase 16',
+// val:'Phase 16'
+// },
+// {label:'Phase 17',
+// val:'Phase 17'
+// },
+// {label:'Phase 18',
+// val:'Phase 18'
+// },
+//   ]);
+//   // eslint-disable-next-line
+//   const [ndh, setNdh] = useState([
 
-{label:'1999',
-val:'1999'
-},
-{label:'2003',
-val:'2003'
-},
-{label:'2008',
-val:'2008'
-},
-{label:'2013',
-val:'2013'
-},
-{label:'2018',
-val:'2018'
-},
-  ]);
-  // eslint-disable-next-line
-  const [nmi, setNmi] = useState([
-    {label:'2010',
-val:'2010'
-},
-{label:'2015',
-val:'2015'
-},
-{label:'2018',
-val:'2018'
-},
-{label:'2021',
-val:'2021'
-},
-  ]);
-  // eslint-disable-next-line
-  const [ned, setNed] = useState([
-    {label:'2004',
-    val:'2004'
-    },
-    {label:'2010',
-    val:'2010'
-    },
-    {label:'2015',
-    val:'2015'
-    },
-    {label:'2020',
-    val:'2020'
-    },
-  ]);
-  // eslint-disable-next-line
-  const [pre, setPre] = useState([
-    {label:'Pre-Test 1',
-    val:'pre-test 1'
-    },
-    {label:'Pre-Test 2',
-    val:'pre-test 2'
-    },
-  ]);
+// {label:'1999',
+// val:'1999'
+// },
+// {label:'2003',
+// val:'2003'
+// },
+// {label:'2008',
+// val:'2008'
+// },
+// {label:'2013',
+// val:'2013'
+// },
+// {label:'2018',
+// val:'2018'
+// },
+//   ]);
+//   // eslint-disable-next-line
+//   const [nmi, setNmi] = useState([
+//     {label:'2010',
+// val:'2010'
+// },
+// {label:'2015',
+// val:'2015'
+// },
+// {label:'2018',
+// val:'2018'
+// },
+// {label:'2021',
+// val:'2021'
+// },
+//   ]);
+//   // eslint-disable-next-line
+//   const [ned, setNed] = useState([
+//     {label:'2004',
+//     val:'2004'
+//     },
+//     {label:'2010',
+//     val:'2010'
+//     },
+//     {label:'2015',
+//     val:'2015'
+//     },
+//     {label:'2020',
+//     val:'2020'
+//     },
+//   ]);
+//   // eslint-disable-next-line
+//   const [pre, setPre] = useState([
+//     {label:'Pre-Test 1',
+//     val:'pre-test 1'
+//     },
+//     {label:'Pre-Test 2',
+//     val:'pre-test 2'
+//     },
+//   ]);
 
  
   const handleSelectInp=(e)=>{
     const name=e.target.name;
 const res = e.target.value;
 if(res ==="yes"){
-setWorkExp(true);
+// setWorkExp(true);
+dispatch(handlewrkChange({ name:'workExp', value:true }));
 }
 else if(res==="no"){
-  setWorkExp(false);
+  // setWorkExp(false);
   // dispatch(handleChange({ name, value:""}));
+  dispatch(handlewrkChange({ name:'workExp', value:false }));
 }
 
 dispatch(handleChange({ name, value:res }));
@@ -175,10 +177,12 @@ dispatch(handleChange({ name, value:res }));
 const res = e.target.value;
 if(res ==="yes"){
 // setWorkExp(true);
-setOtherExp(true)
+// setOtherExp(true)
+dispatch(handlewrkChange({ name:'otherExp', value:true }));
 }
 else if(res==="no"){
-  setOtherExp(false);
+  // setOtherExp(false);
+  dispatch(handlewrkChange({ name:'otherExp', value:false }));
 }
 
 dispatch(handleChange({ name, value:res }));
@@ -190,10 +194,12 @@ dispatch(handleChange({ name, value:res }));
 const res = e.target.value;
 if(res ==="yes"){
 // setWorkExp(true);
-setEmp(true)
+// setEmp(true)
+dispatch(handlewrkChange({ name:'emp', value:true }));
 }
 else if(res==="no"){
-  setEmp(false);
+  // setEmp(false);
+  dispatch(handlewrkChange({ name:'emp', value:false }));
 }
 
 dispatch(handleChange({ name, value:res }));
@@ -212,55 +218,55 @@ else{
 }
   }
 
-  const handleEadMultiSelect = (selectedOption) => {
-    const news = selectedOption.map((it, i) => {
-      return it.val;
-    });
-    const name = "eadType";
-    const newz=news.join(',')
-    dispatch(handleChange({ name, value:newz }));
-    console.log(news,newz);
-  };
+  // const handleEadMultiSelect = (selectedOption) => {
+  //   const news = selectedOption.map((it, i) => {
+  //     return it.val;
+  //   });
+  //   const name = "eadType";
+  //   const newz=news.join(',')
+  //   dispatch(handleChange({ name, value:newz }));
+  //   console.log(news,newz);
+  // };
 
-  const handleNdhMultiSelect = (selectedOption) => {
-    const news = selectedOption.map((it, i) => {
-      return it.val;
-    });
-    const name = "ndhsType";
-    const newz=news.join(',')
-    dispatch(handleChange({ name, value:newz }));
-    console.log(news,newz);
-  };
+  // const handleNdhMultiSelect = (selectedOption) => {
+  //   const news = selectedOption.map((it, i) => {
+  //     return it.val;
+  //   });
+  //   const name = "ndhsType";
+  //   const newz=news.join(',')
+  //   dispatch(handleChange({ name, value:newz }));
+  //   console.log(news,newz);
+  // };
 
-  const handleNmiMultiSelect = (selectedOption) => {
-    const news = selectedOption.map((it, i) => {
-      return it.val;
-    });
-    const name = "nmisType";
-    const newz=news.join(',')
-    dispatch(handleChange({ name, value:newz }));
-    console.log(news,newz);
-  };
+  // const handleNmiMultiSelect = (selectedOption) => {
+  //   const news = selectedOption.map((it, i) => {
+  //     return it.val;
+  //   });
+  //   const name = "nmisType";
+  //   const newz=news.join(',')
+  //   dispatch(handleChange({ name, value:newz }));
+  //   console.log(news,newz);
+  // };
 
-  const handleNedsMultiSelect = (selectedOption) => {
-    const news = selectedOption.map((it, i) => {
-      return it.val;
-    });
-    const name = "nedsType";
-    const newz=news.join(',')
-    dispatch(handleChange({ name, value:newz }));
-    console.log(news,newz);
-  };
+  // const handleNedsMultiSelect = (selectedOption) => {
+  //   const news = selectedOption.map((it, i) => {
+  //     return it.val;
+  //   });
+  //   const name = "nedsType";
+  //   const newz=news.join(',')
+  //   dispatch(handleChange({ name, value:newz }));
+  //   console.log(news,newz);
+  // };
 
-  const handlePreMultiSelect = (selectedOption) => {
-    const news = selectedOption.map((it, i) => {
-      return it.val;
-    });
-    const name = "preType";
-    const newz=news.join(',')
-    dispatch(handleChange({ name, value:newz }));
-    console.log(news,newz);
-  };
+  // const handlePreMultiSelect = (selectedOption) => {
+  //   const news = selectedOption.map((it, i) => {
+  //     return it.val;
+  //   });
+  //   const name = "preType";
+  //   const newz=news.join(',')
+  //   dispatch(handleChange({ name, value:newz }));
+  //   console.log(news,newz);
+  // };
 
   const handleNormInp=(e)=>{
     const name = e.target.name;
@@ -277,11 +283,9 @@ else{
       jobDesc3,
       jobDesc4,
       jobDesc5,
-      eadType,
-      ndhsType,
-      nmisType,
-      nedsType,
-      preType,
+      jobDesc6,
+      jobDesc7,
+      jobDesc8,
       workExperience,
       otherExperience,
       projectName,
@@ -289,7 +293,10 @@ else{
       employed,
       orgName,
   empPosition,
-  poss
+  poss,
+  workExp,
+otherExp,
+emp
     }
     if(editWork){
       localStorage.setItem('workDataInfo',JSON.stringify(work_data));
@@ -366,18 +373,18 @@ else{
     }
     if(editWork){
       if (workExperience ) {
-        setWorkExp(true);
+        dispatch(handlewrkChange({ name:'workExp', value:true }));
       }
       if (otherExperience ) {
-        setOtherExp(true);
+        dispatch(handlewrkChange({ name:'otherExp', value:true }));
       }
       if (employed ) {
-       setEmp(true)
+        dispatch(handlewrkChange({ name:'emp', value:true }));
       }
     }
    
     
-  }, [workExperience,otherExperience,employed,editWork,navigate]);
+  }, [workExperience,otherExperience,employed,editWork,navigate,dispatch]);
   return (
     <Wrapper>
     <div className="container">
@@ -423,38 +430,7 @@ else{
         name='jobDesc1'
         value='ead'
         onChange={handleCheck}
-      />
-
-{/* <Form.Select
-                required
-                aria-label="Default select example"
-                name="experience"
-                // value={challenge}
-                // onChange={handleInp}
-                className="shadow-none form-select jb-sec"
-              >
-                <option value="">select ead phase</option>
-
-                <option value="no">No</option>
-
-                <option value="yes">Yes</option>
-              </Form.Select> */}
-
-            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<Select
-                isMulti
-                options={eads}
-                getOptionLabel={(e) => e.label}
-                getOptionValue={(e) => e.val}
-                onChange={handleEadMultiSelect}
-                
-                className="shadow-none  jb-sec"
-                placeholder='Select Phase'
-                closeMenuOnSelect={false}   
-                value={eadType.split(',').map((it)=>{
-                  return  { val: it, label: it };
-                  
-                                  })}
-              />
+      />   
                 </div>
 
                 <div className="jb-pr"> 
@@ -469,20 +445,7 @@ else{
       />
 
 
-&nbsp; &nbsp; <Select
-                isMulti
-                options={ndh}
-                getOptionLabel={(e) => e.label}
-                getOptionValue={(e) => e.val}
-                onChange={handleNdhMultiSelect}
-                closeMenuOnSelect={false}   
-                className="shadow-none  jb-sec"
-                placeholder='Select Year'
-                value={ndhsType.split(',').map((it)=>{
-                  return  { val: it, label: it };
-                  
-                                  })}
-              />
+
                 </div>
 
                 <div className="jb-pr"> 
@@ -497,20 +460,7 @@ else{
       />
 
 
-&nbsp; &nbsp;&nbsp;<Select
-                isMulti
-                options={nmi}
-                getOptionLabel={(e) => e.label}
-                getOptionValue={(e) => e.val}
-                onChange={handleNmiMultiSelect}
-                closeMenuOnSelect={false}   
-                className="shadow-none  jb-sec"
-                placeholder='Select Year'
-                value={nmisType.split(',').map((it)=>{
-                  return  { val: it, label: it };
-                  
-                                  })}
-              />
+
                 </div>
 
                 <div className="jb-pr"> 
@@ -524,20 +474,6 @@ else{
         onChange={handleCheck}
       />
 
-&nbsp; &nbsp;&nbsp;<Select
-                isMulti
-                options={ned}
-                getOptionLabel={(e) => e.label}
-                getOptionValue={(e) => e.val}
-                onChange={handleNedsMultiSelect}
-                closeMenuOnSelect={false}   
-                className="shadow-none  jb-sec ml-4"
-                placeholder='Select Year'
-                value={nedsType.split(',').map((it)=>{
-                  return  { val: it, label: it };
-                  
-                                  })}
-              />
 
                 </div>
 
@@ -552,7 +488,50 @@ else{
         onChange={handleCheck}
       />
 
-<Select
+
+                </div>
+           
+
+                <div className="jb-pr"> 
+                <Form.Check 
+        type='checkbox'
+        defaultChecked={jobDesc6}
+        id='default-checkbox'
+        label='NURHI'
+        name='jobDesc6'
+        value='NURHI'
+        onChange={handleCheck}
+      />
+
+
+
+                </div>
+                <div className="jb-pr"> 
+                <Form.Check 
+        type='checkbox'
+        defaultChecked={jobDesc7}
+        id='default-checkbox'
+        label='VASA'
+        name='jobDesc7'
+        value='VASA'
+        onChange={handleCheck}
+      />
+
+
+
+                </div>
+                <div className="jb-pr"> 
+                <Form.Check 
+        type='checkbox'
+        defaultChecked={jobDesc8}
+        id='default-checkbox'
+        label='NISHIP'
+        name='jobDesc8'
+        value='NISHIP'
+        onChange={handleCheck}
+      />
+
+{/* <Select
                 isMulti
                 options={pre}
                 getOptionLabel={(e) => e.label}
@@ -565,11 +544,9 @@ else{
                   return  { val: it, label: it };
                   
                                   })}
-              />
+              /> */}
 
                 </div>
-           
-
 
             </Col>
             }
