@@ -37,7 +37,7 @@ export const WebcamCapture = () => {
       } 
       else{
         localStorage.setItem('imgDataInfo',JSON.stringify(img_data));
-        navigate("/banking-info");
+        navigate("/prev"); 
       }
     }
   

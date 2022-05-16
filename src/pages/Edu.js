@@ -60,7 +60,6 @@ else{
     }
  
 
-    
       }
 
   
@@ -120,12 +119,13 @@ else{
                 Grade(*Not Applicable to SSCE)
               </Form.Label>
               <Form.Select
+              required={showGrade}
                 aria-label="Default select example"
                 name="grade"
                 onChange={handleChangeC}
                 className="shadow-none form-select"
                 value={values.grade}
-              >
+              >       
                 <option value="">Select Grade</option>
                 <option value="firstclass">first class</option>
                 <option value="secondclassupper">secondclass upper</option>

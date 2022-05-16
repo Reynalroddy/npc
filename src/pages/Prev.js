@@ -117,11 +117,11 @@ wardDet,
 
       const face= localStorage.getItem('imgDataInfo')?JSON.parse(localStorage.getItem('imgDataInfo')).img:""
 
-      const bnkAcc= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).accName:""
-      const bnkName= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).bankName:""
-      const bnkCode= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).code:""
-      const accNum= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).numb:""
-      const acctype= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).acctyp:""
+      // const bnkAcc= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).accName:""
+      // const bnkName= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).bankName:""
+      // const bnkCode= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).code:""
+      // const accNum= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).numb:""
+      // const acctype= localStorage.getItem('bankDataInfo')?JSON.parse(localStorage.getItem('bankDataInfo')).acctyp:""
 
     const mapCent= localStorage.getItem('resDataInfo')?JSON.parse(localStorage.getItem('resDataInfo')).mapCenter:""
 
@@ -184,11 +184,11 @@ const usersLga= localStorage.getItem('bioDataInfo')?JSON.parse(localStorage.getI
                   formdata.append("empoly_name_company", orgName);
                   formdata.append("employ_desired", poss);
                   formdata.append("face", face);
-                  formdata.append("account_number", accNum);
-                  formdata.append("bank_code", bnkCode);
-                  formdata.append("bank_name", bnkName);
-                  formdata.append("account_name", bnkAcc);
-                  formdata.append("account_type", acctype);
+                  // formdata.append("account_number", accNum);
+                  // formdata.append("bank_code", bnkCode);
+                  // formdata.append("bank_name", bnkName);
+                  // formdata.append("account_name", bnkAcc);
+                  // formdata.append("account_type", acctype);
 
 
 
@@ -498,13 +498,13 @@ lgaResDet}</p>
 <p>{jobDesc4}{(nedsType)}</p>
 <p>{jobDesc5}{(preType)}</p>
 </>
-:'none'
+:<p>none</p>
 }
 </div>
 
 <div className="col-12 col-md-6 col-lg-6">
 <h5>other experience</h5>
-{otherExperience
+{otherExperience||"none"
 }
 </div>
 
@@ -516,7 +516,7 @@ lgaResDet}</p>
 <p>{projectYear}</p>
 
 </>
-:'none'
+:<p>none</p>
 }
 </div>
 
@@ -524,21 +524,21 @@ lgaResDet}</p>
 <h5> Are you currently employed?</h5>
 
 
-{employed
+{employed ||"No"
 }
 </div>
 
 <div className="col-12 col-md-6 col-lg-6">
 <h5>Name of Organization</h5>
 <p>
-{orgName
+{orgName ||"None"
 }</p>
 </div>
 
 <div className="col-12 col-md-6 col-lg-6">
 <h5>Position</h5>
 <p>
-{empPosition
+{empPosition || "None"
 }</p>
 </div>
 
@@ -580,7 +580,7 @@ lgaResDet}</p>
 </div>
 </div>
 
-<div className="cont-4">
+{/* <div className="cont-4">
 <div className="row">
    <h5 style={{color:"green",fontWeight:"bold"}}>Bank Details</h5> 
 </div>
@@ -605,7 +605,7 @@ lgaResDet}</p>
 <button className="my-btn" onClick={()=>handleEdit('editBank')}>EDIT</button>
 </div>
 </div>
-</div>
+</div> */}
 
 <div className="row">
 <div className="col-md-6 mx-auto">

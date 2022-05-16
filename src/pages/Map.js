@@ -54,6 +54,7 @@ export const Maps = ({ google }) => {
               {...getInputProps({
                 placeholder: "Search Places ...",
                 className: "form_input shadow-none",
+                required:true
               })}
             />
             <div className="autocomplete-dropdown-container">

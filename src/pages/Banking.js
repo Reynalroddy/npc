@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Form, Row, Col ,Spinner} from "react-bootstrap";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import pic2 from "../assets/npc/water2.png";
-import { useDispatch } from "react-redux";
-import { handleChange } from "../redux/userSlice";
+// import { useDispatch } from "react-redux";
+// import { handleChange } from "../redux/userSlice";
 import Swal  from 'sweetalert2/dist/sweetalert2';
+import { toast } from "react-toastify";
 const Banking = () => {
-  const {editBank } = useSelector((state) => state.user);
-const dispatch = useDispatch();
+  // const {editBank } = useSelector((state) => state.user);
+// const dispatch = useDispatch();
   const [bank, setBanks] = useState([]);
   const [code, setCode] = useState("");
   const [numb, setNumb] = useState("");
@@ -18,7 +19,7 @@ const dispatch = useDispatch();
   const [accName, setAccName] = useState("");
   const [loading, setLoading] = useState(false);
   const [acctyp, setAccType] = useState("");
-  
+  const access= localStorage.getItem('access_code');
   const handleCodeChange = async (e) => {
     setCode(e.target.value);
     setBankName(e.target.options[e.target.selectedIndex].text);
@@ -118,24 +119,57 @@ setAccType(nm);
     }
 
     else {
-      const bank_data ={
-        numb,
-      code,
-    bankName,
-     accName,
-     acctyp,
-      }
+    //   const bank_data ={
+    //     numb,
+    //   code,
+    // bankName,
+    //  accName,
+    //  acctyp,
+    //   }
         
-      if(editBank){
-        localStorage.setItem('bankDataInfo',JSON.stringify(bank_data));
-        
-        dispatch(handleChange({ name:'editBank', value:false }));
-        navigate("/prev"); 
-      } 
-      else{
-        localStorage.setItem('bankDataInfo',JSON.stringify(bank_data));
-        navigate("/prev");
-      }
+try {
+  var formdata = new FormData();
+  formdata.append("access-code", access);
+  formdata.append("account_number", numb);
+                  formdata.append("bank_code", code);
+                  formdata.append("bank_name", bankName);
+                  formdata.append("account_name", accName);
+                  formdata.append("account_type", acctyp);
+
+              
+          var config = {
+            method: "post",
+            url: "https://api.verxid.site/npc/staging/v1/update-bank-data",
+            headers: {
+              Authorization: "Basic YmFybmtzZm9ydGUtbmltYzowbmx5YmFybmtzMTIz",
+            },
+            data: formdata,
+          };
+          const { data } = await axios(config);
+          console.log(data.nimc); 
+          if(data.nimc.status ===1){
+            toast.success(`${data.nimc.message}, further info will be sent to your email`, {
+              position: "top-center",
+            });
+            setTimeout(()=>{
+              navigate('/');
+              localStorage.removeItem("access_code");
+              localStorage.clear();
+            },2000)
+           
+          }  
+          else{
+            toast.error(data.nimc.message, {
+              position: "top-center",
+            });
+          } 
+         
+} catch (error) {
+  console.log(error)
+  toast.error("please retry", {
+    position: "top-left",
+  });
+}
     }
   }
   
@@ -265,7 +299,7 @@ setAccType(nm);
                 disabled={loading}
                 onClick={handleAppStart}
               >
-                NEXT
+                SAVE DETAILS
               </button>
             </Form>
           </div>

@@ -13,6 +13,8 @@ import pic2 from "../assets/npc/water2.png";
 import { toast } from "react-toastify";
 import Datetime from "react-datetime";
 
+      
+    
 // .........testing.......
 // import { components } from "react-select";
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
@@ -264,6 +266,7 @@ dispatch(handleStChange({name:'userStateDet',value:tx}))
               <Form.Group className="mb-3" controlId="formBasicEText">
                 <Form.Label className="text-left">Middlename</Form.Label>
                 <Form.Control
+              
                   type="text"
                   placeholder="Enter Middlename"
                   name="midname"
@@ -545,13 +548,13 @@ return  { value: it, label: it };
                 <Form.Label className="text-left">Next of kin phone</Form.Label>
                 <Form.Control
                   required
-                  type="text"
+                  type="number"
                   placeholder="Enter next of kin phone"
                   name="kinphone"
                   className="form_input shadow-none"
                   value={kinphone}
                   onChange={handleInp}
-                  maxLength="15"
+                
                 
                 />
               </Form.Group>

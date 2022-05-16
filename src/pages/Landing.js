@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import styled from "styled-components";
 import peep from "../assets/npc/g.svg";
 import logo from "../assets/npc/logs.svg";
@@ -45,6 +45,7 @@ try {
       console.log(data.nimc);
       if(data.nimc.length ===1){
         setDataInfo(data.nimc[0])
+        localStorage.setItem("access_code", data.nimc[0].access_code);
 
         if(data.nimc[0].userstatus==='0'){
 setStat(' Pending')
@@ -330,26 +331,49 @@ setStat('Approved')
                 />
             </Form.Group>
 
-{
-  dataInf &&<div>
 
-    <p>Name: {`${dataInf.lastname} ${dataInf.firstname} ${dataInf.middlename}`}</p>
-<p>Application Status:{stat &&stat}</p>
-  </div>
-}
 
             
 <div className="d-flex justify-content-center">
-<button type="submit" className="my-btn">
-              PROCEED
-            </button>
+  { !dataInf &&
+  <button type="submit" className="my-btn" onClick={handleAppCheck}>
+  PROCEED
+</button>
+  
+  }
 
-            <button className="my-btn btn-clear ms-5" onClick={()=>setLmShow(false)}>
-            CLOSE
-          </button>
+
 </div>
            
           </Form>
+          <button className="my-btn btn-clear mx-auto" onClick={()=>
+ { setLmShow(false)
+setAppNum("");
+ setDataInfo(null);
+ setStat("");
+ localStorage.removeItem("access_code");
+ localStorage.clear();
+ }
+  }>
+            CLOSE
+          </button>
+          {
+  dataInf &&<div>
+    <p>Name: {`${dataInf.lastname} ${dataInf.firstname} ${dataInf.middlename}`}</p>
+<p>Application Status:{stat &&stat}</p>
+    
+  </div>
+}
+
+{
+
+stat==='Approved'
+// stat
+?
+  <div>
+  <Link to='/banking-info'><button className="btn my-btn" >Submit bank details</button></Link> 
+  </div>:""
+}
         </Modal.Body>
       </Modal>
     </Wrapper>

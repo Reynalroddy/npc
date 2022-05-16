@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import Title from '../components/Title';
 import { Form,Row,Col } from 'react-bootstrap';
 import pic2 from "../assets/npc/water2.png";
@@ -10,10 +10,12 @@ import { useNavigate } from "react-router-dom";
 import Map from "./Map";
 import Select from "react-select";
 import { components } from "react-select";
+import { toast } from "react-toastify";
 const Residence = () => {
     const [lg, setLg] = useState([]);
   const [lgas, setLga] = useState([]);
   const [wards, setWards] = useState([]);
+  const selectInputRef = useRef();
     const navigate = useNavigate();
     const isValidNewOption = (inputValue, selectValue) =>
     inputValue.length > 0 && selectValue.length < 3;
@@ -21,11 +23,12 @@ const Residence = () => {
       const optionSelectedLength = props.getValue().length || 0;
       return (
         <components.Menu {...props}>
-          {optionSelectedLength < 3 ? (
+          {optionSelectedLength < 3  ? (
             props.children
           ) : (
             <div style={{ margin: 15 }}>Max limit achieved</div>
           )}
+        
         </components.Menu>
       );
     };
@@ -55,6 +58,13 @@ const Residence = () => {
           lgaResidence,
           wardDet
         }
+if(!ward){
+  toast.error('please select wards', {
+    position: "top-center",
+  });
+  return;
+}
+
 
         if(editRes){
           localStorage.setItem('resDataInfo',JSON.stringify(res_data));
@@ -136,7 +146,9 @@ const Residence = () => {
         //   setLga(data.npc);
         //   return;
         // }
+     selectInputRef.current.clearValue(); 
         setLga(data.npc);
+
         // setWards([]);
         // setUserState(e.target.value);
         // console.log(userState);
@@ -251,7 +263,7 @@ const Residence = () => {
             <Col md={4} lg={4}>
               <Form.Label className="text-left">Select three Wards closest to you.</Form.Label>
               <Select
-              
+               ref={selectInputRef}
                 isMulti
                 options={wards}
                 getOptionLabel={(e) => e.name}

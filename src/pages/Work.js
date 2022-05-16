@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useState,useEffect} from "react";
 import styled from "styled-components";
 import { Row, Col, Form ,FormControl} from "react-bootstrap";
 import pic2 from "../assets/npc/water2.png";
@@ -10,9 +10,10 @@ import { useNavigate } from "react-router-dom";
 // import { toast } from "react-toastify";
 import Title from "../components/Title";
 const Work = () => {
-  // const [workExp,setWorkExp]=useState(false);
-  // const [otherExp,setOtherExp]=useState(false);
-  // const [emp,setEmp]=useState(false);
+  const [enums,setEnums]=useState(false);
+  const [coord,setCoord]=useState(false);
+  const [faci,setFaci]=useState(false);
+  const [supers,setSupers]=useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -271,7 +272,41 @@ else{
   const handleNormInp=(e)=>{
     const name = e.target.name;
     const value = e.target.value;
+    if(value==="Enumerator"){
+      setEnums(true);
+      setFaci(false);
+      setSupers(false);
+      setCoord(false);
+    }
+
+    if(value==="Facilitators"){
+    
+     setFaci(true);
+     setEnums(false);
+   
+     setSupers(false);
+     setCoord(false);
+     
+    }
+
+    if(value==="Supervisor"){
+    
+     setSupers(true);
+     setEnums(false);
+     setFaci(false);
+    
+     setCoord(false);
+    }
+
+    if(value==="Coordinator"){
+      setCoord(true);
+      setEnums(false);
+      setFaci(false);
+      setSupers(false);
+     
+    }
     dispatch(handleChange({ name, value }));
+
   }
 
   const handleSubmit = async (e) => {
@@ -679,7 +714,7 @@ emp && <Col md={6} lg={6} className='pt-1'>
                   Employment Desired
                 </Form.Label>
                 <Form.Select
-                
+                required
                 aria-label="Default select example"
                 name="poss"
                 value={poss}
@@ -689,12 +724,72 @@ emp && <Col md={6} lg={6} className='pt-1'>
                 <option value="">Select </option>
 
                 <option value="Enumerator">Enumerator</option>
-<option value='Census trainers/Facilitators'>Census trainers/Facilitators</option>
+<option value='Facilitators'>Census trainers/Facilitators</option>
                 <option value="Supervisor">Supervisor</option>
-                <option value="Data quality assistants/Coordinator">Data quality assistants/Coordinator</option>
+                <option value="Coordinator">Data quality assistants/Coordinator</option>
               
               </Form.Select>
               </Form.Group>
+
+
+            </Col>
+
+
+            <Col  md={6} lg={6}>
+              {poss==='Enumerator' ||enums ?(<>
+                <h4>Enumerator job requirement.</h4>
+            <p>Be a Nigerian.</p>
+            <p>Speak the language of the local community.</p>
+            <p>Have a minimum of OND.</p>
+            <p>Be between the age range of 18-50 years.</p>
+            <p>Can speak English.</p>
+            <p>Have a functional email and phone number.</p>
+            <p>Have a National Identification Number.</p>
+              </>):""}
+            
+              {poss==='Facilitators' || faci ?(<>
+                <h4>Census Trainers and Facilitators job requirement.</h4>
+            <p>Be a Nigerian.</p>
+            <p>Preferably Teachers or Lecturers
+.</p>
+<p>Must have good presentation skills.</p>
+<p>Have basic office tools skills (Word and PowerPoint is an added advantage)</p>
+            <p>Have a minimum of HND/First Degree.</p>
+            <p>Be between the age range of 35-50 years.</p>
+            <p>Survey field experience would be an added advantage</p>
+            <p>Must have good presentation skills</p>
+            <p>Can speak English.</p>
+            <p>Have a functional email and phone number.</p>
+            <p>Have a National Identification Number.</p>
+              </>):""}
+              {poss==='Supervisor' || supers ?(<>
+                <h4>Field Supervisor job requirement.</h4>
+            <p>Be a Nigerian.</p>
+            <p>Speak the language of the local community.</p>
+            <p>Have a minimum of OND.</p>
+            <p>Be between the age range of 25-50 years.</p>
+            <p>Can speak English.</p>
+            <p>Have survey field experience</p>
+            <p>Have managerial skills</p>
+           
+            <p>Have a functional email and phone number.</p>
+            <p>Have a National Identification Number.</p>
+              </>):""}
+
+              {poss==='Coordinator' || coord ?(<>
+                <h4>Field Coordinator job requirement.</h4>
+            <p>Be a Nigerian.</p>
+            <p>Have basic office tools skills (Excel is an added advantage)
+.</p>
+<p>Have survey field experience.</p>
+            <p>Have managerial skills.</p>
+            <p>Have a minimum of HND/First Degree.</p>
+            <p>Be between the age range of 30-50 years.</p>
+            <p>Can speak English.</p>
+            <p>Have a functional email and phone number.</p>
+            <p>Have a National Identification Number.</p>
+            <p>Preferably Civil Servant or Teachers.</p>
+              </>):""}
             </Col>
             </Row>
 
@@ -739,6 +834,10 @@ const Wrapper = styled.section`
   }
   .jb-sec{
     width: 50%;
+  }
+
+  h4,p{
+    margin-bottom:0
   }
 `;
 

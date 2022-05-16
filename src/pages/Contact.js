@@ -383,7 +383,7 @@ email,phone
      name="phone"
       aria-describedby="basic-addon2"
       className="form_input shadow-none"
-      maxLength="15"
+     tyoe="number"
       value={phone}
       onChange={handleInp}
       onKeyUp={kpx}
