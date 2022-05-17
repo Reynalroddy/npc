@@ -22,7 +22,7 @@ const handleEdit=(name)=>{
    dispatch(handleChange({ name:nm, value:true }));
    if(nm==='editBio'){
     console.log(nm);
-    navigate('/');
+    navigate('/bio-data');
    }
    else if(nm==='editRes'){
     console.log(nm);

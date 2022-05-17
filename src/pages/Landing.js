@@ -373,7 +373,7 @@ stat==='Approved'
   <div>
   <Link to='/banking-info'><button className="btn my-btn" >Submit bank details</button></Link> 
   </div>:""
-}
+}     
         </Modal.Body>
       </Modal>
     </Wrapper>
