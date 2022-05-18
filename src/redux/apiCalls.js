@@ -23,9 +23,9 @@ export const saveNin=async(num)=>{
               position: "top-center",
             });
           } else if (data.nimc.status === 1) {
-            toast.success(data.nimc.message, {
-              position: "top-center",
-            });
+            // toast.success(data.nimc.message, {
+            //   position: "top-center",
+            // });
             localStorage.setItem("nin", num);
             localStorage.setItem("access_code", data.nimc.access_code);
 

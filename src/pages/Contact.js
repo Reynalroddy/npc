@@ -254,18 +254,18 @@ fetch(`https://api.verxid.site/npc/staging/v1/verifyEmail?email=${email}`, reque
        const handleSubmit = async (e) => {
         e.preventDefault();
     // console.log(ver1,ver2,phone,email)
-    // if(!ver1 || !ver2){
-    //     Swal.fire({
-    //         title: ' Verification Unsuccessful!',
-    //         text: 'Verify email and phone number',
-    //         icon: 'warning',
+    if(!ver1){
+        Swal.fire({
+            title: ' Verification Unsuccessful!',
+            text: 'Verify phone number',
+            icon: 'warning',
            
-    //         confirmButtonColor: '#0b6916',
-    //  confirmButtonText: 'Ok'
-    //       })
-    // }
+            confirmButtonColor: '#0b6916',
+     confirmButtonText: 'Ok'
+          })
+    }
 
-    // else{
+    else{
       const con_data={
 email,phone
       }
@@ -337,7 +337,7 @@ email,phone
       // };
     }
     
-       
+  }
     
     
     
@@ -433,7 +433,7 @@ validate
     onChange={handleInp}
     />
     <Button  id="button-addon2" className="my-btn" onClick={verEmail}>
-      verify
+    {ver2?'verified':'verify'}
     </Button>
   </InputGroup>
              

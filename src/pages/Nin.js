@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Form } from "react-bootstrap";
+import { Form,Spinner } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 import pic from "../assets/npc/water.png";
@@ -10,11 +10,13 @@ import { saveNin } from "../redux/apiCalls";
 const Nin = () => {
   // const { accessCode } = useSelector((state) => state.user);
   const [ninNum, setNinNum] = useState("");
-
+  const [loading, setLoading] = useState(false);
 // const navigate = useNavigate();
- 
+    
+
   const handleAppStart = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       var config = {
         method: "get",
@@ -27,6 +29,7 @@ const Nin = () => {
       const { data } = await axios(config);
       console.log(data.nimc);
       if (data.nimc.status === 0) {
+        setLoading(false);
         Swal.fire({
           title: 'NIN verification unavailable',
           text: 'proceed with application',
@@ -40,7 +43,7 @@ const Nin = () => {
          }
        })
       } else if (data.nimc.status === 1 && data.nimc.firstname===null) {
-       
+        setLoading(false);
         Swal.fire({
           title: 'NIN verification unavailable',
           text: 'proceed with application',
@@ -56,6 +59,7 @@ const Nin = () => {
        
     }
     else if (data.nimc.status === 1 && data.nimc.firstname==="") {
+      setLoading(false);
       Swal.fire({
         title: 'NIN verification unavailable',
         text: 'proceed with application',
@@ -70,6 +74,7 @@ const Nin = () => {
      })
     }
     else{
+      setLoading(false);
       toast.success('NIN verification successful', {
         position: "top-center",
     });
@@ -84,6 +89,7 @@ const Nin = () => {
      
 
     } catch (error) {
+      setLoading(false);
       console.log(error);
       toast.error("Network error.please retry", {
         position: "top-center",
@@ -126,6 +132,12 @@ const Nin = () => {
             </Form>
           </div>
         </div>
+        {loading &&
+              <div className="row py-3">
+<div className="col-6  col-md-6 mx-auto">
+<Spinner animation="border" variant="success" />
+</div>
+</div>}
       </div>
 
       
